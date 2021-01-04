@@ -1,0 +1,12 @@
+with open('day1_input') as file:
+    print(file.read)
+
+def calculateFuel(mass):
+    calculatedFuel = int(mass / 3) - 2
+    if calculatedFuel > 0:
+        calculatedFuel = calculatedFuel + calculateFuel(calculatedFuel)
+        return calculatedFuel
+    return 0
+
+
+print(calculateFuel())
