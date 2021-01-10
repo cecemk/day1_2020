@@ -1,0 +1,29 @@
+with open('day3_input') as f:
+    tress = []
+    n = 0
+    for line in f:
+        tress.append(line.strip())
+        n += 1
+
+
+def part1(x, y):
+    row = 0
+    col = 0
+    t = 0
+    while row < n:
+        if tress[row][(col % len(tress[0]))] == "#":
+            t += 1
+
+        row += y
+        col += x
+    return t
+
+print(part1(3, 1))
+
+
+def part2():
+    print([part1(3, 1), part1(1, 1), part1(5, 1), part1(7, 1), part1(1, 2)])
+    return part1(3, 1) * part1(1, 1) * part1(5, 1) * part1(7, 1) * part1(1, 2)
+
+
+print(part2())
