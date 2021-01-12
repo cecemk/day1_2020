@@ -1,0 +1,43 @@
+with open('day6_input') as f:
+    lines = [l.strip() for l in f.readlines()]
+    groups = []
+    groups2 = []
+    current = set()
+    current2 = []
+for line in lines:
+    if line == "":
+        groups.append(current)
+        groups2.append(current2)
+        current = set()
+        current2 = []
+    else:
+        current = current.union(set(line))
+        current2.append(line)
+
+groups.append(current)
+groups2.append(current2)
+
+
+def part1():
+    return sum(len(g) for g in groups)
+
+
+ans_part1 = part1()
+print(ans_part1)
+
+def part2():
+    s = 0
+    for g in groups2:
+        for c in "abcdefghijklmnopqrstuvwxyz":
+            no = False
+            for p in g:
+                if c not in p:
+                    no = True
+                    break
+            if not no:
+                s += 1
+
+    return s
+
+ans_part2 = part2()
+print(ans_part2)
