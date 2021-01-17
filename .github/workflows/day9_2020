@@ -1,0 +1,50 @@
+with open('day9_input') as file:
+    data = file.readlines()
+    data = [int(line.strip()) for line in data]
+
+
+def part1():
+    for i in range(25, len(data)):
+        preamble = data[i - 25:i]
+        num = data[i]
+        found = False
+
+        for j in range(len(preamble) - 1):
+            for k in range(j + 1, len(preamble)):
+                if preamble[j] + preamble[k] == num:
+                    found = True
+                    break
+            if found == True:
+                break
+
+        if found == True:
+            continue
+
+        return num
+
+print(part1())
+
+
+def part2():
+    bad_num = part1()
+    found = False
+
+    for i in range(len(data) - 1):
+        nums = [data[i]]
+        for j in range(i + 1, len(data)):
+            nums.append(data[j])
+
+            if sum(nums) == bad_num:
+                found = True
+                break
+
+            elif sum(nums) > bad_num:
+                break
+
+        if found == True:
+            break
+
+    return min(nums) + max(nums)
+
+
+print(part2())
