@@ -1,0 +1,18 @@
+string = ('010101001111010010101')
+dolzina = len(string)
+i = 1
+lcount = 0
+rcount = 0
+max_score = 0
+
+while i < dolzina:
+    ls = string[0:i]
+    count1 = ls.count('0')
+    rs = string[i:dolzina]
+    count2 = rs.count('1')
+    max_score1 = count1 + count2
+    if max_score1 > max_score:
+        max_score = max_score1
+    i += 1
+
+print(max_score1)
